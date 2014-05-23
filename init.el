@@ -10,6 +10,13 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 (load-theme 'solarized-dark t)
 
+; font tweaking
+(set-face-attribute 'default nil
+                    :family "Inconsolata for Powerline" :height 180 :weight 'normal)
+
+
+
+
 ; handy for stuff like ~/.muttrc
 (add-to-list 'auto-mode-alist '("\\.*rc$" . conf-unix-mode))
 
@@ -29,3 +36,13 @@
 
   (when (display-graphic-p)
     (ns-raise-emacs)))
+
+; starts the emacs server (equiv to --daemon) when starting the cocoa gui
+(when (and window-system (not (boundp 'server-process))) (server-start))
+
+; put all backups in a single place
+(setq backup-directory-alist `(("." . "~/.saves")))
+(setq delete-old-versions t
+  kept-new-versions 2
+  kept-old-versions 1
+  version-control t)
