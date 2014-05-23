@@ -1,3 +1,8 @@
 [submodule "themes/emacs-color-theme-solarized"]
 	   path = themes/emacs-color-theme-solarized
 	   url = https://github.com/solarce/emacs-color-theme-solarized.git
+
+[submodule "powerline"]
+           path = powerline
+	   url = https://github.com/milkypostman/powerline.git
+		      
