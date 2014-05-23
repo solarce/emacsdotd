@@ -46,3 +46,32 @@
   kept-new-versions 2
   kept-old-versions 1
   version-control t)
+
+;;------------------------------------------------------------------------------
+;; On-demand installation of packages
+;;------------------------------------------------------------------------------
+
+;; Initialiaze packages
+(package-initialize)
+
+(defun require-package (package &optional min-version no-refresh)
+  "Ask elpa to install given PACKAGE."
+  (if (package-installed-p package min-version)
+      t
+    (if (or (assoc package package-archive-contents) no-refresh)
+	(package-install package)
+      (progn
+	(package-refresh-contents)
+	        (require-package package min-version t)))))
+
+;;------------------------------------------------------------------------------
+;; Install missing packages
+;;------------------------------------------------------------------------------
+
+;; various
+(require-package 'magit)
+
+; omg powerline all the things
+(add-to-list 'load-path "~/.emacs.d/powerline")
+(require 'powerline)
+(powerline-default-theme)
