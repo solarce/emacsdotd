@@ -14,9 +14,6 @@
 (set-face-attribute 'default nil
                     :family "Inconsolata for Powerline" :height 180 :weight 'normal)
 
-
-
-
 ; handy for stuff like ~/.muttrc
 (add-to-list 'auto-mode-alist '("\\.*rc$" . conf-unix-mode))
 
@@ -70,8 +67,3 @@
 
 ;; various
 (require-package 'magit)
-
-; omg powerline all the things
-(add-to-list 'load-path "~/.emacs.d/powerline")
-(require 'powerline)
-(powerline-default-theme)
